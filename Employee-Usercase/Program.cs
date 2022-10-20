@@ -4,10 +4,23 @@
     {
         static void Main(string[] args)
         {
-            EmpWageBuilderArray empWageBuilder = new EmpWageBuilderArray();
-            empWageBuilder.addCompanyEmpWage("Amazon", 20, 20, 100);
-            empWageBuilder.addCompanyEmpWage("Tata", 15, 20, 50);
-            empWageBuilder.computeEmpWage();
+             Console.WriteLine("Enter a Company Name: ");
+             string companyname = Console.ReadLine();
+
+             Console.WriteLine("Enter Employee Rate Per Hour: ");
+             int empRatePerHour = Convert.ToInt32(Console.ReadLine());
+
+             Console.WriteLine("Enter number of working days: ");
+             int numOfWorkingDays = Convert.ToInt32(Console.ReadLine());
+
+             Console.WriteLine("Enter max hours per month: ");
+             int maxHoursPerMonth = Convert.ToInt32(Console.ReadLine());
+
+             EmpWageBuilder empWageBuilder = new EmpWageBuilder();
+             empWageBuilder.addCompanyEmpWage(companyname, numOfWorkingDays, empRatePerHour, maxHoursPerMonth);
+             empWageBuilder.computeEmpWage();
+        
+           
         }
     }
 }
