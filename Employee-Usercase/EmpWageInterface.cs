@@ -6,29 +6,23 @@ using System.Threading.Tasks;
 
 namespace Employee_Usercase
 {
-    public interface IEmployeeUsercase
-    {
-        public void addCompanyEmpWage(string companyname, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth);
-        public void computeEmpWage();
-        public void getTotalWage(string companyname);
-    }
     public class CompanyEmpWage
     {
-        public string companyname;
+
+        public string company;
         public int empRatePerHour;
         public int numOfWorkingDays;
         public int maxHoursPerMonth;
         public int totalEmpWage;
 
-        public CompanyEmpWage(string companyname, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth)
+        public CompanyEmpWage(string company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth)
         {
-            this.companyname = companyname;
+            this.company = company;
             this.empRatePerHour = empRatePerHour;
             this.numOfWorkingDays = numOfWorkingDays;
             this.maxHoursPerMonth = maxHoursPerMonth;
-            this.totalEmpWage = 0;
-        }
 
+        }
         public void setTotalEmpWage(int totalEmpWage)
         {
             this.totalEmpWage = totalEmpWage;
@@ -36,9 +30,9 @@ namespace Employee_Usercase
 
         public string toString()
         {
-            return "Total Emp Wage for Company " + this.companyname + " is: " + this.totalEmpWage;
+            return "Total Emp Wage for company : " + this.company + "is : " + this.totalEmpWage;
         }
 
-
     }
+
 }

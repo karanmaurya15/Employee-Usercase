@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Employee_Usercase
 {
-    public class EmpWageBuilder : IEmployeeUsercase
-    {
-        public const int IS_PART_TIME = 1;
-        public const int IS_FULL_TIME = 2;
+      public class EmpWageBuilder
+      {
+            public const int IS_FULL_TIME = 1;
+            public const int IS_PART_TIME = 2;
 
         private LinkedList<CompanyEmpWage> companyEmpWageList;
         private Dictionary<string, CompanyEmpWage> companyToEmpWageMap;
@@ -36,41 +36,39 @@ namespace Employee_Usercase
             }
         }
 
-        private int computeEmpWage(CompanyEmpWage companyEmpWage)
-        {
-            int empHrs = 0, totalEmpHrs = 0, totalWorkingDays = 0;
 
-            while (totalEmpHrs <= companyEmpWage.maxHoursPerMonth && totalWorkingDays < companyEmpWage.numOfWorkingDays)
+
+        public int computeEmpWage(CompanyEmpWage companyEmpWage)
             {
-                totalWorkingDays++;
-                Random random = new Random();
-                int empCheck = random.Next(0, 3);
-                switch (empCheck)
+                int empHrs = 0;
+                int totalEmpHrs = 0;
+                int totalWorkingDays = 0;
+
+                while (totalEmpHrs <= companyEmpWage.maxHoursPerMonth && totalWorkingDays < companyEmpWage.numOfWorkingDays)
                 {
-                    case IS_PART_TIME:
-                        empHrs = 4;
-                        break;
-                    case IS_FULL_TIME:
-                        empHrs = 8;
-                        break;
-                    default:
-                        empHrs = 0;
-                        break;
+                    totalWorkingDays++;
+                    Random random = new Random();
+                    int empCheck = random.Next(0, 3);
+                    switch (empCheck)
+                    {
+                        case IS_FULL_TIME:
+                            empHrs = 8;
+                            break;
+                        case IS_PART_TIME:
+                            empHrs = 4;
+                            break;
+                        default:
+                            empHrs = 0;
+                            break;
+                    }
+
+                    totalEmpHrs += empHrs;
+                    Console.WriteLine("Day#:" + totalWorkingDays + "Emp Hrs : " + empHrs);
+
                 }
-                totalEmpHrs += empHrs;
-                Console.WriteLine("Day#:" + totalWorkingDays + "Emp Hrs: " + empHrs);
+                return totalEmpHrs * companyEmpWage.empRatePerHour;
+
             }
-            return totalEmpHrs * companyEmpWage.empRatePerHour;
-        }
 
-        public int getTotalWage(string companyname)
-        {
-            return this.companyToEmpWageMap[companyname].totalEmpWage;
-        }
-
-        void IEmployeeUsercase.getTotalWage(string companyname)
-        {
-            throw new NotImplementedException();
-        }
-    }
+      }
 }

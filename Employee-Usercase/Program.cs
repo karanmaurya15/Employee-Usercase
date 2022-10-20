@@ -19,8 +19,8 @@
              EmpWageBuilder empWageBuilder = new EmpWageBuilder();
              empWageBuilder.addCompanyEmpWage(companyname, numOfWorkingDays, empRatePerHour, maxHoursPerMonth);
              empWageBuilder.computeEmpWage();
-        
-           
+
+
         }
     }
 }
