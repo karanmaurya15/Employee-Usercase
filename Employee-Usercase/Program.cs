@@ -16,13 +16,9 @@
              Console.WriteLine("Enter max hours per month: ");
              int maxHoursPerMonth = Convert.ToInt32(Console.ReadLine());
 
-             EmpWageBuilder empWageBuilder = new EmpWageBuilder();
+             EmpWageBuilderArray empWageBuilder = new EmpWageBuilderArray();
              empWageBuilder.addCompanyEmpWage(companyname, numOfWorkingDays, empRatePerHour, maxHoursPerMonth);
-             empWageBuilder.computeEmpWage();
-
-            Console.WriteLine("Total Wage when queried by the companies is as follows: ");
-            Console.WriteLine("Total wage for " + companyname + " is " + empWageBuilder.getTotalWage(companyname));
-          
+            empWageBuilder.computeEmpWage(); 
 
         }
     }
